@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 const express = require('express');
 
 const router = express.Router();
@@ -22,17 +23,17 @@ const data = [{
 
 router.get('/', (req, res) => {
   const { id } = req.query; // note: ESLint airbnb/base insists on object destructuring syntax!
- if (!id){
-  res.json(data);
-  return;
- }
- 
-  console.log(`id=${id}`);
-  console.log("length", data.length)
-  let match = { "msg": "error" };
-  for (let q of data) {
-    console.log("q=", q);
-    if (q.id == id) {
+  if (!id) {
+    res.json(data);
+    return;
+  }
+
+  // console.log(`id=${id}`);
+  // console.log('length', data.length);
+  let match = { msg: 'error' };
+  for (const q of data) {
+    // console.log('q=', q);
+    if (q.id === id) {
       match = q;
     }
   }
@@ -51,15 +52,14 @@ router.get('/recent', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const { id } = req.params; // note: ESLint airbnb/base insists on object destructuring syntax!
-  console.log(`id=${id}`);
-  let match = { "msg": "error" };
-  for (let q of data) {
-    console.log("q=", q);
-    if (q.id == id) {
+  // console.log(`id=${id}`);
+  let match = { msg: 'error' };
+  for (const q of data) {
+    // console.log('q=', q);
+    if (q.id === id) {
       match = q;
     }
   }
   res.json(match);
-}
-  );
+});
 module.exports = router;
