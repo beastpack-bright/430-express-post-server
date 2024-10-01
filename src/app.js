@@ -27,7 +27,7 @@ const indexRouter = require('./routes/index.js');
 app.use('/', indexRouter);
 
 /*
-
+.
 // .all refers to ALL http methods - GET, POST, DELETE etc
 // note .status(404) and method chaining
 // .status(404) is how we send the 404 - File Not Found status code
