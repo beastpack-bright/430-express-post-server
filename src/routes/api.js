@@ -70,4 +70,14 @@ router.put('/updateHoot/:id([0-9,a-z,A-Z,-]{36})', (req, res) => {
     res.json(hoot);
   }
 });
+router.get('/hoots/:id([0-9,a-z,A-Z,-]{36})', (req, res) => {
+  const hoot = getHootById(req.params.id);
+  if (!hoot) {
+    const error = `id: '${req.params.id}' not found`;
+    res.status(404).json({ error });
+  } else {
+    res.json(hoot);
+  }
+});
+
 module.exports = router;
